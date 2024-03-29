@@ -111,15 +111,26 @@
     </div>
 
     <script>
+        // 엔터 키 입력 감지하여 addTodo 함수 호출
+        document.getElementById('todoInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                addTodo();
+            }
+        });
+
         document.getElementById('addTodo').addEventListener('click', function () {
+            addTodo();
+        });
+
+        var todosCheckNumber = 0;
+
+        function addTodo() {
             var value = document.getElementById('todoInput').value;
             if (value) {
                 addTodoItem(value);
                 document.getElementById('todoInput').value = '';
             }
-        });
-
-        var todosCheckNumber = 0;
+        }
 
         function addTodoItem(text) {
             var todoList = document.getElementById('todoList');
